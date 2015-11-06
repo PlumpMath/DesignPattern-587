@@ -1,0 +1,23 @@
+<project name="project" default="init" basedir=".">
+	<property name="folder" value="temp">
+	</property>
+	<target name="init">
+		<echo>初始化</echo>
+		<!-- 删除文件夹下的文件-->
+		<delete>
+			<fileset dir="${folder}" />
+		</delete>
+	</target>
+
+	<target name="complile" depends="init">
+		<echo>编译</echo>
+		<javac srcdir="src" destdir="${folder}">
+
+		</javac>
+	</target>
+	<target name="jar" depends="complile">
+		<echo>打jar</echo>
+		<jar destfile="${folder}/test.jar" basedir="${folder}" />
+	</target>
+
+</project>
